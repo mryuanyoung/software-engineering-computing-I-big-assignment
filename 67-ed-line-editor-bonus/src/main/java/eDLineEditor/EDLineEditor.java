@@ -20,19 +20,8 @@ public class EDLineEditor {
 		Scanner in = new Scanner(System.in);
 		String line;
 		while(in.hasNextLine()) {
-			if((line = in.nextLine()).startsWith("ed ")){
-				String file = line.substring(3,line.length());
-				try {
-					File filename = new File(file);
-					BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filename)));
-					String a;
-					while((a = br.readLine())!=null)
-						System.out.println(a);
-				}
-				catch (Exception e){
-					e.printStackTrace();
-				}
-				break;
+			if((line = in.nextLine())!=null){
+				System.out.println(line);
 			}
 		}
 	}
