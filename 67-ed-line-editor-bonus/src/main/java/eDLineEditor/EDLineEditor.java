@@ -1,5 +1,9 @@
 package eDLineEditor;
 
+
+import java.io.*;
+import java.util.Scanner;
+
 public class EDLineEditor {
 	
 	/**
@@ -13,7 +17,24 @@ public class EDLineEditor {
 	 * 说明：可以添加其他类和方法，但不要删除该文件，改动该方法名和参数，不要改动该文件包名和类名
 	 */
 	public static void main(String[] args) {
-		
+		Scanner in = new Scanner(System.in);
+		String line;
+		while(in.hasNextLine()) {
+			if((line = in.nextLine()).startsWith("ed ")){
+				String file = line.substring(3,line.length());
+				try {
+					File filename = new File(file);
+					BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filename)));
+					String a;
+					while((a = br.readLine())!=null)
+						System.out.println(a);
+				}
+				catch (Exception e){
+					e.printStackTrace();
+				}
+				break;
+			}
+		}
 	}
 	
 }
