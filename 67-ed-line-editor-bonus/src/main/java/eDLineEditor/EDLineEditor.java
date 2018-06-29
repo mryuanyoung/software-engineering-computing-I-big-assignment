@@ -666,7 +666,7 @@ public class EDLineEditor {
 
 	private void order_u(){
 		if(this.address1==-1&&this.address2==-1&&this.param.length()==0) {
-			if ((this.lastorder != 'u'&&this.lastorder!='p')||this.count_u==0) {
+			if ((this.lastorder != 'u'&&this.lastorder!='p'&&this.lastorder!='=')||this.count_u==0) {
 				this.stack.remove(this.stack.size()-1);
 			}
 			this.contents.clear();
