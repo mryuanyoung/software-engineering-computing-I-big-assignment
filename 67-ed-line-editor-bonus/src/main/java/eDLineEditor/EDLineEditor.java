@@ -445,7 +445,7 @@ public class EDLineEditor {
 		}
 		else {
 			System.out.println("?");
-//			System.out.println("p_error");
+			System.out.println("p_error");
 		}
 	}
 
@@ -692,7 +692,7 @@ public class EDLineEditor {
 		}
 		else {
 			System.out.println("?");
-//			System.out.println("k_error");
+			System.out.println("k_error");
 		}
 	}
 
