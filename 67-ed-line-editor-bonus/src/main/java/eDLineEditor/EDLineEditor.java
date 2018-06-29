@@ -1,11 +1,9 @@
 package eDLineEditor;
 
 
+
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
-import java.util.Stack;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -43,6 +41,7 @@ public class EDLineEditor {
 	private Stack<Integer> line_stack = new Stack<>();
 	private int count_u = 0;
 	private ArrayList<ArrayList<String>> stack = new ArrayList<>();
+	private HashMap<Character,String> k_con = new HashMap<>();
 
 	public static void main(String[] args) {
 		EDLineEditor ed = new EDLineEditor();
@@ -148,6 +147,7 @@ public class EDLineEditor {
 					break;
 			}
 			ed.lastorder = ed.order;
+			ed.setK_index();
 		}
 	}
 
@@ -678,6 +678,7 @@ public class EDLineEditor {
 			addr = this.address1;
 		if(this.param.length()==1&&this.param.charAt(0)>='a'&&this.param.charAt(0)<='z'&&addr>0){
 			this.k_index.put(this.param.charAt(0),addr);
+			this.k_con.put(this.param.charAt(0),this.contents.get(addr-1));
 		}
 		else {
 			System.out.println("?");
@@ -855,5 +856,19 @@ public class EDLineEditor {
 		}
 		return addrs;
 	}
-	
+
+	private void setK_index(){
+		for(Map.Entry<Character,String> entry:this.k_con.entrySet()){
+			int origin = this.transToInt("'" + entry.getKey());
+			int nowaddr = 0;
+			for(int i=0; i<this.contents.size(); i++){
+				if(this.contents.get(i).equals(entry.getValue())){
+					nowaddr = i + 1;
+					break;
+				}
+			}
+			if(origin!=nowaddr)
+				this.k_index.put(entry.getKey(),nowaddr);
+		}
+	}
 }
