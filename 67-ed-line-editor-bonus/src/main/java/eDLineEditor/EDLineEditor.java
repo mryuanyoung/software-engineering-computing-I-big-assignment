@@ -676,14 +676,14 @@ public class EDLineEditor {
 			addr = this.currentline;
 		else if(this.address1 > 0 && this.address2 == -1)
 			addr = this.address1;
-		if(this.param.length()==1&&this.param.charAt(0)>='a'&&this.param.charAt(0)<='z'&&addr>0){
+		if(this.param.length()==1&&(this.param.charAt(0)>='a'&&this.param.charAt(0)<='z')&&addr>0){
 			this.k_index.put(this.param.charAt(0),addr);
 			this.k_con.put(this.param.charAt(0),this.contents.get(addr-1));
 		}
 		else {
 			System.out.println("?");
 		}
-	}  //未实现
+	}
 
 	private void order_u(){
 		if(this.address1==-1&&this.address2==-1&&this.param.length()==0) {
@@ -823,7 +823,7 @@ public class EDLineEditor {
 			if(toint<0||toint>this.contents.size())
 				toint = -2;
 		}
-		else if(param.startsWith("'"))
+		else if(param.startsWith("'")&&param.charAt(1)>='a'&&param.charAt(1)<='z')
 			toint = this.k_index.getOrDefault(param.charAt(1),-2);
 		else
 			toint = -2;
