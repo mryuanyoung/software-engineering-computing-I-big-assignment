@@ -880,6 +880,7 @@ public class EDLineEditor {
 			}
 			if(origin!=nowaddr)
 				this.k_index.put(entry.getKey(),nowaddr);
+			System.out.println("k : "+entry.getKey() + "v : " + entry.getValue());
 		}
 	}
 }
