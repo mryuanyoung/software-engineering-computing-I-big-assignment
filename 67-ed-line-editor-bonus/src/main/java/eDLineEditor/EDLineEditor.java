@@ -45,7 +45,7 @@ public class EDLineEditor {
 
 	public static void main(String[] args) {
 		EDLineEditor ed = new EDLineEditor();
-		String addressReg = "((?:\\.|\\$|[0-9]+|/[^/]+/|\\?[^?]+\\?|'[a-zA-Z]|,|;)?[-+]?(?:[0-9])?)?";
+		String addressReg = "((?:\\.|\\$|[0-9]+|/[^/]+/|\\?[^?]+\\?|'[a-z]|,|;)?[-+]?(?:[0-9])?)?";
 		String paramReg = "([a-z]|/.+/(?:[0-9g])?|(?:(?:\\.|\\$|[0-9]+|/[^/]+/|\\?[^?]+\\?|'[a-z]|,|;)?[-+]?(?:\\.|\\$|[0-9]+|/[^/]+/|\\?[^?]+\\?|'[a-z]|;)?))?";
 		String regex = addressReg + ",?" + addressReg + "([a-zA-Z=])" + paramReg;
 		Pattern pattern = Pattern.compile(regex);
@@ -88,7 +88,7 @@ public class EDLineEditor {
 						System.out.println("?");
 					break;
 				case 'Q':
-					if(ed.address1!=-1) {
+					if(ed.address1!=-1||ed.param.length()!=0) {
 						System.out.println("?");
 						break;
 					}
@@ -144,6 +144,9 @@ public class EDLineEditor {
 				case 'u':
 					ed.order_u();
 					ed.haveChange = true;
+					break;
+				default:
+					System.out.println("?");
 					break;
 			}
 			ed.lastorder = ed.order;
@@ -445,7 +448,7 @@ public class EDLineEditor {
 		}
 		else {
 			System.out.println("?");
-			System.out.println("p_error");
+//			System.out.println("p_error");
 		}
 	}
 
@@ -692,7 +695,7 @@ public class EDLineEditor {
 		}
 		else {
 			System.out.println("?");
-			System.out.println("k_error");
+//			System.out.println("k_error");
 		}
 	}
 
