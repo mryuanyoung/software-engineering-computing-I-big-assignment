@@ -443,7 +443,7 @@ public class EDLineEditor {
 		if(this.address1==-1&&this.address2==-1){
 			System.out.println(this.contents.size());
 		}
-		else if(this.address1 >= 0 && this.address2 == -1&&this.address1<Integer.MAX_VALUE){
+		else if(this.address1 > 0 && this.address2 == -1&&this.address1<Integer.MAX_VALUE){
 			System.out.println(this.address1);
 		}
 		else {
