@@ -401,42 +401,51 @@ public class EDLineEditor {
 	}
 
 	private void order_p(){
-		if(this.address1==-1&&this.address2==-1){
-			System.out.println(this.contents.get(this.currentline-1));
-		}
-		else if(this.address1 > 0 && this.address2 == -1){
-			if(this.address1==Integer.MAX_VALUE){
-				for(String i:this.contents)
-					System.out.println(i);
-				this.currentline = this.contents.size();
+//		if(this.address1==-1&&this.address2==-1){
+//			System.out.println(this.contents.get(this.currentline-1));
+//		}
+//		else if(this.address1 > 0 && this.address2 == -1){
+//			if(this.address1==Integer.MAX_VALUE){
+//				for(String i:this.contents)
+//					System.out.println(i);
+//				this.currentline = this.contents.size();
+//			}
+//			else if(this.address1==Integer.MAX_VALUE/2){
+//				for(int i=this.currentline-1; i<this.contents.size(); i++){
+//					System.out.println(this.contents.get(i));
+//				}
+//				this.currentline = this.contents.size();
+//			}
+//			else{
+//				System.out.println(this.contents.get(this.address1-1));
+//				this.currentline = this.address1;
+//			}
+//		}
+//		else if(this.address1 >= 0 && this.address2 >= 0&&this.address1<=this.address2) {
+//			if (this.address1 == 0) {
+//				for (int i = this.address1; i < this.address2; i++) {
+//					System.out.println(this.contents.get(i));
+//				}
+//				this.currentline = this.address2;
+//			} else {
+//				for (int i = this.address1 - 1; i < this.address2; i++) {
+//					System.out.println(this.contents.get(i));
+//				}
+//				this.currentline = this.address2;
+//			}
+//		}
+		int addr[] = getValidaddr();
+		int addr1 = addr[0];
+		int addr2 = addr[1];
+		if(addr1>0&&addr1<=addr2&&addr2<=this.contents.size()&&this.param.length()==0){
+			for(int i=addr1-1; i<addr2; i++){
+				System.out.println(this.contents.get(i));
 			}
-			else if(this.address1==Integer.MAX_VALUE/2){
-				for(int i=this.currentline-1; i<this.contents.size(); i++){
-					System.out.println(this.contents.get(i));
-				}
-				this.currentline = this.contents.size();
-			}
-			else{
-				System.out.println(this.contents.get(this.address1-1));
-				this.currentline = this.address1;
-			}
-		}
-		else if(this.address1 >= 0 && this.address2 >= 0&&this.address1<=this.address2) {
-			if (this.address1 == 0) {
-				for (int i = this.address1; i < this.address2; i++) {
-					System.out.println(this.contents.get(i));
-				}
-				this.currentline = this.address2;
-			} else {
-				for (int i = this.address1 - 1; i < this.address2; i++) {
-					System.out.println(this.contents.get(i));
-				}
-				this.currentline = this.address2;
-			}
+			this.currentline = addr2;
 		}
 		else {
 			System.out.println("?");
-			System.out.println("p_error");
+//			System.out.println("p_error");
 		}
 	}
 
@@ -683,7 +692,7 @@ public class EDLineEditor {
 		}
 		else {
 			System.out.println("?");
-			System.out.println("k_error");
+//			System.out.println("k_error");
 		}
 	}
 
