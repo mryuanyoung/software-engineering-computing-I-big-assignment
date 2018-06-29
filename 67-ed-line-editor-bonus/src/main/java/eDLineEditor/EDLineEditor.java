@@ -834,10 +834,8 @@ public class EDLineEditor {
 			if(toint<0||toint>this.contents.size())
 				toint = -2;
 		}
-		else if(param.startsWith("'")&&param.charAt(1)>='a'&&param.charAt(1)<='z')
-			toint = this.k_index.getOrDefault(param.charAt(1),-2);
-		else
-			toint = -2;
+		else if(param.startsWith("'")&&param.charAt(1)>='a'&&param.charAt(1)<='z'&&this.k_index.containsKey(param.charAt(1)))
+			toint = this.k_index.get(param.charAt(1));
 		return toint;
 	}
 
@@ -880,7 +878,7 @@ public class EDLineEditor {
 			}
 			if(origin!=nowaddr)
 				this.k_index.put(entry.getKey(),nowaddr);
-			System.out.println("k : "+entry.getKey() + "v : " + entry.getValue());
+//			System.out.println("k : "+entry.getKey() + "v : " + entry.getValue());
 		}
 	}
 }
