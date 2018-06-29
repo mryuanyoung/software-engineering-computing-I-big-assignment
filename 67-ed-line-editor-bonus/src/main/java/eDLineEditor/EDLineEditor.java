@@ -24,7 +24,6 @@ public class EDLineEditor {
 	private boolean haveQuit = false;
 	private boolean haveStore = false;
 	private boolean haveChange = false;
-	private boolean edfile = false;
 	private int quitTimes = 0;
 	private int address1;
 	private int address2;
@@ -156,7 +155,6 @@ public class EDLineEditor {
 
 	private void order_ed(){
 		if (this.instruction.length == 2) {
-			this.edfile = true;
 			this.fileName = this.instruction[1];
 			this.contents.clear();
 			try {
@@ -178,7 +176,6 @@ public class EDLineEditor {
 			this.line_stack.push(this.currentline);
 		}
 		else {
-			this.edfile = false;
 			this.contents.clear();
 			this.currentline = 0;
 			this.stack.add(new ArrayList<>(this.contents));
